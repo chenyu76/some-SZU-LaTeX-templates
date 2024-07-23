@@ -1,0 +1,342 @@
+\documentclass[a4paper,zihao=5,UTF8, twoside]{ctexart}
+
+% 基础宏包引用
+\usepackage{framed}
+\usepackage{fancybox}
+%\usepackage[left=1.25in,right=1.25in,top=1in,bottom=1in]{geometry}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{cite}
+\usepackage{color}
+\usepackage{longtable}
+\usepackage{ifthen}
+\usepackage{hyperref}
+
+\usepackage{anyfontsize}
+
+\usepackage{zhnumber} 
+% section 序号
+% section 样式设置
+\usepackage{titlesec}
+\titleformat{\section}[block]{\centering\bfseries\normalsize}{\zhnum{section}、}{0em}{}[\texorpdfstring{\noindent\begin{tikzpicture}[overlay]
+   \fill[white] (-0.115, 0.3) rectangle (3.9, 1.15);
+   \draw (-0.115,0.3) -- (16.03,0.3); 
+   \draw (-0.115,1.15) -- (16.03,1.15); 
+  \end{tikzpicture}\begin{tikzpicture}[remember picture,overlay]
+			\node[anchor=north, fill=white, minimum width=\paperwidth, minimum height=1in] at (current page.north) {};
+		\end{tikzpicture}}]
+
+\titleformat{\subsection}[block]{\normalfont\normalsize\songti}{\arabic{subsection}. }{0em}{}
+\titleformat{\subsubsection}[block]{\normalfont\normalsize\songti}{\hspace{2em} \arabic{subsubsection}. }{0em}{}
+
+% 设置书签层级
+\hypersetup{bookmarksnumbered, bookmarksopen, bookmarksopenlevel=1}
+
+% 定义存储两段文本的命令
+\newcommand{\projProfInfo}[2]{%
+    \newcommand{\projProfInfoOne}{#1}%
+    \ifthenelse{\equal{#2}{}}{%
+        % 第二个参数为空时的处理
+        \newcommand{\projProfInfoTwo}{}%
+    }{%
+        % 第二个参数不为空时的处理
+        \newcommand{\projProfInfoTwo}{#2}%
+    }%
+}
+
+
+%\renewcommand{\baselinestretch}{1.5} % 行距
+%\renewcommand{\normalsize}{\fontsize{12pt}{18pt}\selectfont} % 字号
+
+% Windows 下的字体配置，可以取消注释使用
+%\setCJKmainfont{仿宋}[       % 替换为你的默认字体名称
+%	BoldFont=宋体,            % 替换为你的粗体字体名称
+%	ItalicFont=楷体           % 替换为你的斜体字体名称
+%]
+
+% Arch Linux AUR/ttf-foundertype-sc-fonts
+\setCJKmainfont{FZFangSong-Z02S}[
+	BoldFont=FZShuSong-Z01S,        
+	ItalicFont=FZKai-Z03S           
+]
+
+\newcommand{\attachmentPath}{附件2.大学生创新训练项目申报书.pdf} % 附件2的文件路径
+\newcommand{\projName}{（修改为项目名称）}
+\newcommand{\projType}{（项目类型）}
+\newcommand{\projMngr}{（项目负责人）}
+\newcommand{\projMngrTel}{（项目负责人电话）}
+\newcommand{\projMemb}{（成员/111111、成员/222222）}
+\newcommand{\projMngrNum}{（学号）}
+\newcommand{\projProf}{（指导教师）}
+\newcommand{\projProfTel}{（指导教师电话）}
+\newcommand{\projProfTitle}{（教师职称）}
+\newcommand{\school}{深圳大学}
+\newcommand{\projDate}{\today} % 项目日期
+\newcommand{\projResult}{（预期成果形式）}
+\newcommand{\projInfo}{（项目简介项目简介项目简介项目简介项目简介项目简介项目简介项目简介）}
+\projProfInfo{
+	这里是指导教师主要研究方向与成果的第一页内容
+
+	如果一页放不下的话就在后面的空\{\} 中写上，注意这里需要编译两次位置才正确
+
+	插入一个vspace\{\}会让它好看一些
+
+	\vspace{14cm}
+}{}
+
+
+% 图表标题字样小一号
+\captionsetup{font={small}}
+
+\NewDocumentCommand\makeCover{m}
+{
+\newpage
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture, overlay, inner sep=0pt, font=\fontsize{18}{27}\selectfont]
+  \node at (current page.center) 
+    {\includegraphics[width=\paperwidth, height=\paperheight, keepaspectratio=false, page=1]{#1}};
+  \node[above] at (9.5,-6){\projName};
+  \node[above] at (9.5,-7.5){\projMngr};
+  \node[above] at (9.5,-9.0){\projMngrTel};
+  \node[above] at (9.5,-10.5){\projProf};
+  \node[above] at (9.5,-12.0){\projProfTel};
+  \node[above] at (9.5,-13.5){\school};
+  \node[above] at (9.5,-15.0){\projDate};
+\end{tikzpicture}
+\newpage
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture, overlay, inner sep=0pt]
+  \node at (current page.center) 
+    {\includegraphics[width=\paperwidth, height=\paperheight, page=2, keepaspectratio=false]{#1}};
+\end{tikzpicture}
+\newpage
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture, overlay, inner sep=0pt]
+  \node at (current page.center) 
+    {\includegraphics[width=\paperwidth, height=\paperheight, page=3, keepaspectratio=false]{#1}};
+\end{tikzpicture}
+\newpage
+}
+
+% 每章节之间的分割符定义
+\NewDocumentCommand\tableSeparator{}
+{
+	\noindent\begin{tikzpicture}[overlay]
+		\draw (-0.12,-0.2) -- (16.03,-0.2); 
+	\end{tikzpicture}
+}
+
+
+% 版面设置
+\pagestyle{fancy}
+\fancyhf{} % 清空当前的页眉和页脚设置
+\fancyhead{} % 清空页眉
+\renewcommand{\headrulewidth}{0pt} % 页眉线宽设为0，即不显示页眉线
+
+% 创业训练项目需要的奇偶数页码
+
+% 奇数页（右侧）和偶数页（左侧）的页码设置
+% LE: 偶数页的左侧，RO: 奇数页的右侧
+%\fancyfoot[LE,RO]{\Large{\rule[0.6ex]{0.5cm}{0.6pt} \ \thepage \ \ \rule[0.6ex]{0.5cm}{0.6pt}}}
+
+% 为开放式文档设置不同的页脚，以便章节的第一页通常没有页码
+%\fancypagestyle{plain}{
+%  \fancyhf{} % 清空页眉和页脚
+%  \fancyfoot[LE,RO]{} % 同样在左偶右奇位置放置页码
+%  \renewcommand{\headrulewidth}{0pt} % 不显示页眉线
+%}
+
+\date{\today}
+\begin{document}
+
+% 封面，你可能需要修改参数为你对应的附件2文件目录
+\makeCover{\attachmentPath}
+\renewcommand{\arraystretch}{1.5}
+\newpage
+\newgeometry{left=0.95in,bottom=0.95in,top=0.95in,right=0.95in}
+\begin{table}[H]
+	\begin{tabular}{|p{3.5cm}p{3.5cm}p{3.5cm}p{3.5cm}p{3.5cm}p{3.5cm}|}%可能需要微调这些宽度
+		\hline
+		\multicolumn{2}{|l|}{\textbf{\textcolor{red}{项目名称}}}     &
+		\multicolumn{1}{l|}{\textbf{\textcolor{red}{项目类型}}}      &
+		\multicolumn{1}{l|}{\textbf{\textcolor{red}{项目负责人姓名}}}   &
+		\multicolumn{1}{l|}{\textbf{\textcolor{red}{负责人手机号}}}    &
+		\textbf{\textcolor{red}{负责人学号}}                            \\ \hline
+		\multicolumn{2}{|p{3cm}|}{\projType}                     &
+		\multicolumn{1}{l|}{\projType}                           &
+		\multicolumn{1}{l|}{\projMngr}                           &
+		\multicolumn{1}{l|}{\projMngrTel}                        &
+		\projMngrNum                                               \\
+		\hline
+		\multicolumn{2}{|l|}{\textbf{\textcolor{red}{项目其他成员信息}}} &
+		\multicolumn{4}{l|}{\projMemb}                             \\ \hline
+		\multicolumn{2}{|l|}{\textbf{\textcolor{red}{指导教师}}}     &
+		\multicolumn{1}{l|}{\textbf{\textcolor{red}{指导教师职称}}}    &
+		\multicolumn{1}{l|}{\textbf{\textcolor{red}{教师电话/手机号}}}  &
+		\multicolumn{2}{l|}{\textbf{\textcolor{red}{预期成果形式}}}      \\ \hline
+		\multicolumn{2}{|l|}{\projProf}                          &
+		\multicolumn{1}{l|}{\projProfTitle}                      &
+		\multicolumn{1}{l|}{\projProfTel}                        &
+		\multicolumn{2}{l|}{\projResult}                           \\ \hline
+		\multicolumn{2}{|l|}{
+			\begin{tabular}[c]{@{}l@{}}
+				\textbf{\textcolor{red}{项目创新特色概述}} \\
+				\textbf{\textcolor{red}{（限200字数以内）}}
+			\end{tabular}
+		}                                                        &
+		\multicolumn{4}{l|}{
+			\begin{tabular}[c]{@{}p{12cm}@{}}
+				\projInfo
+			\end{tabular}
+		}                                                          \\ \hline
+		\multicolumn{6}{|c|}{\textbf{（红色字段为必填项）}}                  \\ \hline
+		\multicolumn{1}{|l|}{}                                   &
+		\multicolumn{1}{p{2cm}|}{指导教师主要研究方向与成果}                  &
+		\multicolumn{4}{l|}{
+			\begin{tabular}[l]{@{}p{12cm}@{}}
+				\projProfInfoOne
+			\end{tabular}
+		}                                                          \\ \hline
+	\end{tabular}
+\end{table}
+\newpage
+\restoregeometry
+
+\fancypage{\fbox}{}
+
+\ifthenelse{\equal{\projProfInfoTwo}{}}{}{%
+	\begin{figure}[H]
+		\hfill
+		\begin{minipage}{0.75\linewidth}
+			\projProfInfoTwo
+		\end{minipage}
+
+		\begin{tikzpicture}[overlay]
+			\draw[] (3.8, -0.65) -- (3.8, 20);
+			\draw[] (0.3, -0.65) -- (0.3, 20);
+		\end{tikzpicture}
+	\end{figure}
+}
+
+\section{前期基础（1000 字以内）}
+
+%(研究成员的知识条件,研究兴趣,相关经历及开展本项目的基础)
+
+内容1
+
+
+\section{项目实施思路(3000 字以内)}
+
+\subsection{研究意义与目的,同类研究工作国内外研究现状与存在的问题等}
+
+内容2
+
+%\bibliograpstyle{unsrt}
+%\bibliography{./reference.bib}
+
+
+\tableSeparator
+
+\subsection{研究内容及工作方案}
+
+内容3
+
+\tableSeparator
+
+\subsection{拟解决主要问题}
+
+内容4
+
+\tableSeparator
+
+\subsection{研究支持条件\small{(使用仪器或设备)}}
+
+内容5
+
+
+\tableSeparator
+
+\subsection{预期研究成果\small{(研究论文、设计、专利、产品、鉴定、推广应用等)}}
+
+成果
+
+
+\tableSeparator
+
+\subsection{项目创新之处\small{(原始创新:重大科学发现、技术发明;集成创新:融合多种相关技术,形成新
+		产品、新产业;引进消化吸收再创新:在引进国内外先进技术的基础上,学习、分析、借鉴,形成具
+		有自主知识产权的新技术)}}
+
+创新
+
+
+\section{项目管理(800 字以内)}
+
+\subsection{项目人员分工}
+
+分工
+
+
+\tableSeparator
+
+\subsection{项目研究时间安排 (查阅资料 、选题、项目研究方案、开题报告、实验研究、数据统计、处理
+	与分析、研制开发、结题、撰写研究论文和总结报告、参加结题答辩和成果推广等)}
+
+时间
+
+\section{计划项目条件保障(800 字以内)}
+
+\subsection{经费预算及使用计划(材料费、资料费、版面费、鉴定费、专利费等)}
+
+钱
+
+
+\tableSeparator
+
+\subsection{资源保障(实验教学示范中心、科研实验室、研究所、科教实践基地、仪器设备、文献资料等)}
+
+保障
+
+\section{指导教师意见(600 字以内)}
+
+意见
+
+\begin{flushright}
+	导师签字： \hspace{6cm}
+
+	年\qquad 月 \qquad 日\hspace{4cm}
+\end{flushright}
+
+\section{学院意见}
+
+\vspace{5cm}
+
+\begin{flushright}
+	学院领导（签字） \hspace{5cm} （公章） \hspace{1cm}
+
+	年\qquad 月 \qquad 日
+\end{flushright}
+
+\section{学校专家组意见}
+
+\vspace{5cm}
+
+\begin{flushright}
+	学校专家组成员（签字） \hspace{7cm}
+
+	（公章） \hspace{1cm}
+
+	年\qquad 月 \qquad 日
+\end{flushright}
+
+
+
+\end{document}

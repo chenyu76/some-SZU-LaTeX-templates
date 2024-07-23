@@ -1,0 +1,233 @@
+\documentclass[a4paper,zihao=5,UTF8]{ctexart}
+
+% 实验预习处： http://172.31.80.14:7101
+% 快乐制表网站： https://www.tablesgenerator.com/#
+
+% 基础宏包引用
+\usepackage{anyfontsize}
+\usepackage{framed}
+\usepackage{fancybox}
+%\usepackage[left=1.25in,right=1.25in,top=1in,bottom=1in]{geometry}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{multicol}
+
+
+% 中文数字的section 序号
+\usepackage{zhnumber} 
+\renewcommand{\thesection}{\zhnum{section}、}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+
+% section 的字体设置
+\usepackage{titlesec}
+\titleformat{\section}[block]{\normalfont\bfseries\Large}{\thesection}{0em}{}
+%\titleformat{\subsection}[block]{\normalfont\bfseries\normalsize}{\thesubsection}{1ex}{}
+
+% 表格中使用 C 即1cm宽的空表
+\usepackage{comment}
+\usepackage{array}
+\newcolumntype{C}{>{\centering\arraybackslash}m{1.0cm}}
+
+% 图表标题字样小一号
+\captionsetup{font={small}}
+
+% 保持纵横比，在新一页插入一张图片
+\newcommand\includeFullPageGraphicsBeta[2][]{
+  \newpage
+  \thispagestyle{empty}
+  \begin{tikzpicture}[remember picture, overlay, inner sep=0pt]
+    \node at (current page.center) 
+      {\includegraphics[width=\paperwidth, keepaspectratio=false,#1]{#2}};
+  \end{tikzpicture}
+  \newpage
+}
+
+% 插入实验报告封面定义1
+\newcommand\includeFullPageGraphics[2][]{
+  \newpage
+  \thispagestyle{empty}
+  \begin{tikzpicture}[remember picture, overlay, inner sep=0pt]
+    \node at (current page.center) 
+      {\includegraphics[width=\paperwidth, height=\paperheight, keepaspectratio=false,#1]{#2}};
+  \end{tikzpicture}
+  \newpage
+}
+% 插入实验报告封面定义2
+\NewDocumentCommand\makePhyExpCover{m}
+{
+\newpage
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture, overlay, inner sep=0pt]
+  %
+  %%%%以下部分需要修改%%%%
+  %
+  \node[above, font=\fontsize{#1}{#1}\selectfont] at (8.5,-5.8)
+  {\textbf{标题标题标题标题标题标题}};
+  \node[above, font=\fontsize{#1}{#1}\selectfont] at (8.5,-7.9)
+  {\textbf{学院学院学院}};
+  \node[above, font=\fontsize{#1}{#1}\selectfont] at (11,-10.0)
+  {\textbf{老师老师老师老师}};
+  \node[above, font=\fontsize{#1}{#1}\selectfont] at (5.75,-12.1)
+  {\textbf{姓姓名姓名名}};
+  \node[above, font=\fontsize{#1}{#1}\selectfont] at (11,-12.1)
+  {\textbf{学号学号学号学号}};
+  \node[above, font=\fontsize{#1}{#1}\selectfont] at (4.87,-10.0)
+  {\textbf{01}};
+  \node[right, font=\fontsize{10.95}{10.95}\selectfont] at (-1,0.5)
+  {课程编号\underline{　　课程编号　　}};
+  %
+  %%%%%%%%%%%%%%%%%%%%
+  %
+  
+  \node[above, font=\fontsize{22.5}{20}\selectfont] at (7.13,-3.33)
+  {\textbf{深圳大学大学物理实验（3）实验论文}};
+  \node[right, font=\fontsize{#1}{#1}\selectfont] at (1.8,-5.6)
+  {\textbf{题目：}\rule[-5pt]{9.7cm}{1pt}};
+  \node[right, font=\fontsize{#1}{#1}\selectfont] at (1.8,-7.7)
+  {\textbf{学院：}\rule[-5pt]{9.7cm}{1pt}};
+  \node[right, font=\fontsize{#1}{#1}\selectfont] at (1.8,-9.8)
+  {\textbf{组号：}\rule[-5pt]{3.72cm}{1pt}\textbf{指导教师：}\rule[-5pt]{8.7cm}{1pt}};
+  \node[right, font=\fontsize{#1}{#1}\selectfont] at (1.8,-11.9)
+  {\textbf{报告人：}\rule[-5pt]{4cm}{1pt}\textbf{学号：}\rule[-5pt]{4.4cm}{1pt}};
+  \node[right, font=\fontsize{#1}{#1}\selectfont] at (1.8,-14.0)
+  {\textbf{实验报告提交时间：}\rule[-5pt]{10.6cm}{1pt}};
+
+
+  \draw (9.45,1.2) rectangle (15.75,-0.8);
+  \draw (9.45,0.6) -- (15.75,0.6);
+  \draw (10.9,1.2) rectangle (10.9,-0.8);
+  \draw (13.5,1.2) rectangle (13.5,-0.8);
+  \node[above, font=\fontsize{10.95}{10.95}\selectfont] at (10.175,0.7)
+  {\textbf{得分}};
+  \node[above, font=\fontsize{10.95}{10.95}\selectfont] at (12.175,0.7)
+  {\textbf{教师签名}};
+  \node[above, font=\fontsize{10.95}{10.95}\selectfont] at (14.625,0.7)
+  {\textbf{批改日期}};
+
+  \filldraw[white] (12.9, -4) rectangle  (21, -20);
+
+  % 教师评语
+  \draw (-1, -17) rectangle (15.5, -23);
+  \draw (-1, -18) -- (15.5, -18); 
+  \node[right, font=\fontsize{10.95}{10.95}\selectfont] at(-0.8, -17.5) {\textbf{指导教师评语}};
+\end{tikzpicture}
+\newpage
+}
+
+\newcommand{\dif}{\mathrm{d}}
+
+% 每章节之间的分割符定义
+\newcommand{\smartTableSeparator}{
+
+  \ifdim\pagetotal>\dimexpr\textheight-8\baselineskip
+
+      \clearpage
+    
+  \else
+    \par
+    \begin{tikzpicture}[overlay]
+      \draw (-0.85, -0.65) -- (15.29, -0.65);
+    \end{tikzpicture}
+  \fi
+}
+
+\NewDocumentCommand\sectionWithSeparator{m}{
+  \smartTableSeparator
+  \section{#1}
+}
+
+% 版面设置
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{}
+\cfoot{}
+\rfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headwidth}{\textwidth}
+\renewcommand{\footrulewidth}{0pt}
+
+
+% showonlyrefs 选项确保只有被引用的公式才会编号
+%\usepackage{mathtools}
+%\mathtoolsset{showonlyrefs}
+
+
+\begin{document}
+
+\twocolumn
+
+% 实验报告封面
+\makePhyExpCover{14}
+
+\begin{figure*}[t]
+	\begin{minipage}{0.99\textwidth}
+
+		\begin{center}
+			\Large
+			\textbf{标标题标题标题标题标题标题标题标题题}
+			\\[10pt]
+			\normalsize
+			\textit{姓名}
+			\\[8pt]
+			\small
+			\textit{(学院学院学院学院学院)}
+		\end{center}
+
+		\small
+		\noindent\textbf{摘　要}\
+		摘要摘要摘要摘要摘要摘要摘要摘要
+
+		\noindent\textbf{关键词}\ 词词词词词词
+
+		\begin{center}
+			\Large
+			\textbf{TitleTitleTitleTitleTitleTitleTitle}
+			\\[10pt]
+			\normalsize
+			Your name
+			\\[8pt]
+			\small
+			(ShenZhen University)
+		\end{center}
+
+		\small
+		\noindent\textbf{abstract}\ abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract
+
+		\noindent\textbf{keywords}\ key word key word
+
+		\normalsize
+
+	\end{minipage}
+\end{figure*}
+
+\vspace*{0.999\textheight}
+
+\quad
+
+\tableofcontents
+
+%\begin{multicols}{2}
+
+\section{引言}
+
+你好！
+
+%\nocite{*}
+%\bibliographystyle{unsrt}
+%\bibliography{ref.bib}
+
+
+
+%\end{multicols}
+
+\end{document}

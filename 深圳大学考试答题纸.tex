@@ -1,0 +1,81 @@
+\documentclass[a4paper,zihao=5,UTF8]{ctexart}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{comment}
+
+\usepackage[hidelinks]{hyperref} %生成引用链接
+
+% 颜色字体
+\usepackage{color}
+
+% 引用（编译需要使用xe->bib->xe->xe）
+\usepackage{cite}
+
+\usepackage{lastpage}
+
+\pagestyle{fancy}
+\lhead{\author}
+\chead{\date}
+\rhead{}
+\lfoot{}
+\cfoot{第\thepage 页 \quad 共 \pageref{LastPage} 页}
+\rfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\headwidth}{\textwidth}
+\renewcommand{\footrulewidth}{0pt}
+
+\usepackage{framed} 
+
+% 中文数字的section 序号
+\usepackage{zhnumber} 
+\renewcommand{\thesection}{\zhnum{section} }
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+
+\renewcommand{\normalsize}{\fontsize{12}{18}\selectfont}
+
+
+%\title{深圳大学考试答题纸}
+%\author{（以论文、报告等形式考核专用）}
+
+\begin{document}
+
+\begin{center}
+    \LARGE{深圳大学考试答题纸}\normalsize
+
+    （以论文、报告等形式考核专用）
+
+    二〇二X$\thicksim$二〇二X学年度第一学期
+\end{center}
+
+\fontsize{10.5}{16}
+
+\noindent\kaishu{课程编号\underline{（课程编号）}　课序号\underline{01}　课程名称\underline{（课程名称）}　主讲教师\underline{（教师）}　评分\underline{　　　}} % 评分中的　是全角空格，所以会在pdf中显示为空格，之后的同理
+
+\noindent\kaishu{学　　号\underline{　（学号）　}　姓名\underline{　（姓名）　}　专业年级\underline{　（专业年级）　}}
+
+\begin{framed}
+    \noindent\kaishu{教师评语：}
+    \quad\\[1cm]
+\end{framed}
+%\end{comment}
+
+\begin{center}
+    \noindent\kaishu{题目：}
+
+    \heiti{\fontsize{14}{21}标题标题标题标题}
+\end{center}
+
+\normalsize
+\normalfont
+
+
+正文
+
+
+%\newpage
+%\bibliographystyle{unsrt}
+%\bibliography{./reference.bib}
+
+\end{document}
