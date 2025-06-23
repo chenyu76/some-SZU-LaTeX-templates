@@ -218,6 +218,8 @@ Tips: 你不用在意将线段细致长度，设置得过长不会有大问题�
 
 若使用请注意卡号和密码被明文储存在脚本中，需留心保管你的脚本文件以免密码泄漏。
 
+在校园网登陆方法更新后,它只能在宿舍区用了……
+
 # 如果你的老师只允许提交.docx文件……
 
 ## 方案1
@@ -241,6 +243,7 @@ Microsoft Word、[Smallpdf](https://smallpdf.com/cn/pdf-to-word) 和 Acrobat PDF
     - Smallpdf（没错又是他）提供了一个转jpg的[网页工具](https://smallpdf.com/cn/pdf-to-jpg)
     - Acrobat PDF 可以直接导出pdf为图片
     - 学校提供的[免费教育版福昕pdf](http://ms.szu.edu.cn/)导出
-    - 本仓库下的[`pdf2svg.py`](pdf2svg.py)脚本（感谢PyMuPDF，它可以将pdf转为矢量的svg）
+    - 本仓库下的[`pdf2svg.py`](pdf2svg.py) python脚本（需要安装PyMuPDF库）（感谢PyMuPDF，它可以将pdf转为矢量的svg）
+    - 注意：导出的图片分辨率需要足够高，这样插入word时宽度就会自动设为页面宽度
 
 3. 将生成的pdf一股脑插入word文档中。

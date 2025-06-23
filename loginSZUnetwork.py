@@ -22,8 +22,9 @@ def get_host_ip():
 
     return ip
 
-def try_login1():
 
+# 2025年1月11信息中心更新网络登陆页面后失效
+def try_login1():
     print('通过https://drcom.szu.edu.cn/a70.htm连接')
     url = 'https://drcom.szu.edu.cn/a70.htm'#?isReback=1'
     data = {
@@ -80,7 +81,7 @@ def try_login1():
 def try_login2():
     #换一个方法
     print('通过http://172.30.255.42:801连接')
-    url = 'http://172.30.255.42:801/eportal/portal/login?callback=dr1003&login_method=1&user_account=,1,'+cardID+'&user_password='+loginPw+'&wlan_user_ip=172.24.93.55&wlan_user_ipv6=&wlan_user_mac=000000000000&wlan_ac_ip=&wlan_ac_name=&jsVersion=4.1.3&terminal_type=2&lang=zh-cn&v=9847&lang=zh'    
+    url = 'http://172.30.255.42:801/eportal/portal/login?callback=dr1003&login_method=1&user_account=,1,'+cardID+'&user_password='+loginPw+'&wlan_user_ip='+get_host_ip()+'&wlan_user_ipv6=&wlan_user_mac=000000000000&wlan_ac_ip=&wlan_ac_name=&jsVersion=4.1.3&terminal_type=2&lang=zh-cn&v=9847&lang=zh'    
     response = -1
     try:
         response = requests.get(url).status_code  # 直接利用 GET 方式请求这个 URL 同时获取状态码
@@ -94,18 +95,18 @@ def try_login2():
     return False
     #url = 'https://drcom.szu.edu.cn:801/eportal/extern/szdx_wlan0718/ip/1/loginbox.js?version=1.4_1677723729742'  # 这行是你需要根据自己的情况修改的地方
     
-def exit1():
-   
+def exitAfter1s():   
     print('即将自动关闭……')
     time.sleep(1)
     exit()
 
 
 if __name__ == '__main__':
-
-    if try_login1():
-        print('连接成功')
-        exit1()
+    #print(get_host_ip())
+    
+    # if try_login1():
+    #     print('连接成功')
+    #     exitAfter1s()
     
     print('连接失败，尝试方法2')
     try2 = try_login2()
@@ -115,5 +116,5 @@ if __name__ == '__main__':
         print('连接失败')
         print(try2)
 
-    exit1()
+    exitAfter1s()
     #os.system('pause')
