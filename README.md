@@ -212,15 +212,17 @@ Tips: 你不用在意将线段细致长度，设置得过长不会有大问题�
 
 # 登陆校园网Python脚本
 
-[`loginSZUnetwork.py`](loginSZUnetwork.py)
+[`loginSZUnetworkDormArea.py`](loginSZUnetworkDormArea.py)
+
+[`loginSZUnetworkTeachingArea.py`](loginSZUnetworkTeachingArea.py)
 
 在文件里修改你的校园卡号和密码后使用Python运行此脚本便可以一键登陆深圳大学校园网。
 
-不知道扔哪里就一并放到这个库了。
+不知道扔哪里就一并放到这个仓库。
 
 若使用请注意卡号和密码被明文储存在脚本中，需留心保管你的脚本文件以免密码泄漏。
 
-在校园网登陆方法更新后，它只能在宿舍区用了……
+注意教学区和宿舍区的脚本不同。
 
 # 如果你的老师只允许提交.docx文件……
 
